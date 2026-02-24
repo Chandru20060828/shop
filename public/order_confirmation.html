@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed - Dress Collections</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .confirmation-container {
+      max-width: 600px;
+      margin: 4rem auto;
+      text-align: center;
+      background: white;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .success-icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      display: block;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">👗 Dress Collections</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="confirmation-container">
+      <span class="success-icon">🎉</span>
+      <h1 style="color: #28a745; margin-bottom: 1rem;">Order Placed Successfully!</h1>
+      <p style="font-size: 1.2rem; color: #666;">Thank you, <span id="customer-name" style="font-weight: bold; color: #667eea;">Customer</span>!</p>
+      
+      <div style="margin: 2rem 0; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+        <p>Your order has been received and is being processed.</p>
+        <p>You will receive an email confirmation shortly.</p>
+      </div>
+
+      <a href="index.html" class="btn-primary" style="display: inline-block; text-decoration: none;">Continue Shopping</a>
+    </div>
+  </main>
+
+  <script>
+    // Get customer name from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+    if (name) {
+      document.getElementById('customer-name').textContent = name;
+    }
+  </script>
+</body>
+</html>

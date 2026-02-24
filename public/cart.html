@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Dress Collections</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">👗 Dress Collections</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cart.html" class="active" id="cart-link">🛒 Cart</a>
+        <a href="login.html" id="login-link">Login</a>
+        <a href="register.html" id="register-link">Register</a>
+        <a href="#" id="logout-btn" style="display:none; color: #ff6b6b;">Logout</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="cart">
+      <h2>🛒 Your Shopping Cart</h2>
+      <div id="cart-items"></div>
+      <div id="cart-summary" style="margin-top: 2rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); text-align: right;">
+        <h3>Total: <span id="total-price" style="color: #f5576c; font-size: 1.5rem;">$0.00</span></h3>
+        <button id="checkout-btn" style="margin-top: 1rem;">🛍️ Proceed to Checkout</button>
+        <a href="index.html" style="display: block; margin-top: 1rem; color: #667eea; text-decoration: none;">← Continue Shopping</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Dress Collections - Premium Fashion Store</p>
+  </footer>
+
+  <script>
+    // Update navbar based on login status
+    document.addEventListener('DOMContentLoaded', () => {
+      const token = localStorage.getItem('token');
+      const loginLink = document.getElementById('login-link');
+      const registerLink = document.getElementById('register-link');
+      const logoutBtn = document.getElementById('logout-btn');
+
+      if (token) {
+        if (loginLink) loginLink.style.display = 'none';
+        if (registerLink) registerLink.style.display = 'none';
+        if (logoutBtn) logoutBtn.style.display = 'block';
+      }
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('token');
+          localStorage.removeItem('cart');
+          alert('You have been logged out!');
+          window.location.href = 'index.html';
+        });
+      }
+    });
+  </script>
+  <script src="cart.js"></script>
+</body>
+</html>
